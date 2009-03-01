@@ -13,3 +13,13 @@
 
 
 print "Hallo Heimweh!\n\n";
+
+// Laoding Core Functions
+include("core/functions.php");
+
+// Loading Core Classes
+include("core/heimweh.class.php");
+include("modules/module.module.class.php");
+
+
+print "Auf Wiedersehen!";
