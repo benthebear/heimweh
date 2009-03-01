@@ -13,7 +13,9 @@
 
 class module{
 
-	public function menu ($path){
-		print get_class($this)."::".implode("/", $path);
+	public function menu ($path, $theme){
+		$data[] = $path;
+		$data[] = "Ich war hier";
+		theme_call_page($theme, "index", $data);
 	}
 }

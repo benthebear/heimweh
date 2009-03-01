@@ -16,16 +16,30 @@ class heimweh{
 	protected $modules;
 	// Contains an Array with the data from the menu-call
 	protected $data;
+	// The name of the theme;
+	protected $theme;
 
+	
+	
+	public function __construct(){		
+		$this->create_path();
+		$this->theme = "nationalgalerie";
+		$this->load_modules();
+		$this->modules = $this->get_all_modules();
+	}
+	
+	
 	/**
 	 * Get the Query-Parameter
 	 *
 	 * @return array containing the explodes $q
 	 */
 	public function create_path(){
+		// If the path is set, use it
 		if(isset($_GET["q"])){
 			$path = explode("/", $_GET["q"]);
-			print_r ($path);
+			//print_r ($path);
+		// If the path isn't set use core-Module
 		}else{
 			$path = array("module");
 		}
@@ -38,8 +52,9 @@ class heimweh{
 	 * 
 	 * 
 	 */
-	function load_modules(){
-		
+	public function load_modules(){
+		include("modules/node.module.class.php");
+		include("modules/archive.module.class.php");
 	}
 
 	/**
@@ -51,10 +66,10 @@ class heimweh{
 		$modules = array("module");
 		foreach (get_declared_classes() as $class){
 			if(get_parent_class($class)=="module"){
-				$this->modules [] = $class;
+				$modules [] = $class;
 			}
 		}
-		
+		return $modules;
 	}
 
 	public function invoke_hook($hook){
@@ -72,13 +87,12 @@ class heimweh{
 	 * @param array $modules
 	 * @param array $path
 	 */
-	public function call_menu($path){
-		if(in_array($path[0], $this->modules)){
-			$class = new $path[0]();
-			$data = $class->menu($path);
+	public function call_menu(){
+		if(in_array($this->path[0], $this->modules)){
+			$class = new $this->path[0]();
+			$class->menu($this->path, $this->theme);
 		}else{
-			print "404 - nichts ist hier";
+			theme_call_page($this->theme, "404");
 		}
 	}
-
 }

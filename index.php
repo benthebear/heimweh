@@ -31,15 +31,16 @@
  */
 
 
-print "Hallo Heimweh!\n\n";
+
 
 // Loading Core Functions
 include("core/functions.php");
+include("core/theme.php");
 
 // Loading Core Classes
 include("core/heimweh.class.php");
 include("core/module.module.class.php");
 
 $heimweh = new heimweh();
+$heimweh->call_menu();
 
-print "Auf Wiedersehen!";

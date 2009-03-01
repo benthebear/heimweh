@@ -12,8 +12,10 @@
 
 class node extends module  {
 	
-	public function menu ($path){
-		print "my::".implode("/", $path);
+	public function menu ($path, $theme){
+		$data[] = $path;
+		$data[] = "Ich bin eine Node";
+		theme_call_page($theme, "index", $data);
 	}
 	
 }
