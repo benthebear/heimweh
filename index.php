@@ -11,12 +11,12 @@
  * Marcus Abel						digitalkombinat.net
  * Thomas Baumann					digitalkombinat.net
  * Sebastian Ermshaus 		digitalkombinat.net
- * Sascha Hagemann				digitalkombiant.net * 
+ * Sascha Hagemann				digitalkombiant.net 
  * Ron Drongowski					drongowski.net
  * Nico Brünjes						codecandies.de
  * Marc Tönsing						marctv.de
  * Sven Heising						endeneu.de
- * Sebastian Munz					yolk.com
+ * Sebastian Munz					yo.lk
  * Konstantin Weiss				konnexus.net
  * Maurice Sand						fymmie.de
  * Arne Seemann						arnalyse.blogspot.com
