@@ -30,9 +30,6 @@
  * 
  */
 
-
-
-
 // Loading Core Functions
 include("core/functions.php");
 include("core/theme.php");
