@@ -1,5 +1,5 @@
 #
-# Apache/PHP/Drupal settings:
+# Apache/PHP/Heimweh settings:
 #
 
 
@@ -23,28 +23,6 @@ DirectoryIndex index.php
 
 # Override PHP settings. More in sites/default/settings.php
 # but the following cannot be changed at runtime.
-
-# PHP 4, Apache 1.
-<IfModule mod_php4.c>
-  php_value magic_quotes_gpc                0
-  php_value register_globals                0
-  php_value session.auto_start              0
-  php_value mbstring.http_input             pass
-  php_value mbstring.http_output            pass
-  php_value mbstring.encoding_translation   0
-</IfModule>
-
-# PHP 4, Apache 2.
-<IfModule sapi_apache2.c>
-	php_flag register_globals off
-  #php_admin_flag safe_mode on
-  php_value magic_quotes_gpc                0
-  php_value register_globals                0
-  php_value session.auto_start              0
-  php_value mbstring.http_input             pass
-  php_value mbstring.http_output            pass
-  php_value mbstring.encoding_translation   0
-</IfModule>
 
 # PHP 5, Apache 1 and 2.
 <IfModule mod_php5.c>
@@ -98,7 +76,7 @@ DirectoryIndex index.php
   #
   # If your site is running in a VirtualDocumentRoot at http://example.com/,
   # uncomment the following line:
- # RewriteBase /heimweh 
+  # RewriteBase /heimweh 
 
   # Rewrite URLs of the form 'index.php?q=x'.
   RewriteCond %{REQUEST_FILENAME} !-f
