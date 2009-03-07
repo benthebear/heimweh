@@ -9,18 +9,22 @@
 
 //############# Debugging Functions
 function debug_var($var){
-
 	print ("<pre>");
 	print_r($var);
 	print ("</pre>\n");
-
-
 }
 
 function debug_str($var){
 	print "<pre>$var</pre>\n";
 }
 
+function debug($mixed){
+	if(is_array($mixed)){
+		debug_var($mixed);
+	}else{
+		debug_str($mixed);
+	}
+}
 
 
 // ######### Sanitization Tools
@@ -97,14 +101,11 @@ function clean_strip_quotations($string){
 	return $string;
 }
 
-function clean_ascii_string($string){
+function clean_replace_umlaute($string){
 	if(is_string($string)){
-		$string = preg_replace("/&/", "", $string);
-		$string = preg_replace("/</", "", $string);
-		$string = preg_replace("/>/", "", $string);
 		$string = preg_replace("/Ö/", "Oe", $string);
 		$string = preg_replace("/Ä/", "Ae", $string);
-		$string = preg_replace("/Ü/", "Üe", $string);
+		$string = preg_replace("/Ü/", "Ue", $string);
 		$string = preg_replace("/ö/", "oe", $string);
 		$string = preg_replace("/ä/", "ae", $string);
 		$string = preg_replace("/ü/", "ue", $string);
@@ -117,6 +118,23 @@ function clean_ascii_string($string){
 		$string = preg_replace("/À/", "A", $string);
 		$string = preg_replace("/á/", "a", $string);
 		$string = preg_replace("/à/", "a", $string);
+	}
+	return $string;
+}
+
+function clean_replace_xmlentities($string){
+	if(is_string($string)){
+		$string = preg_replace("/&/", "", $string);
+		$string = preg_replace("/</", "", $string);
+		$string = preg_replace("/>/", "", $string);
+	}
+	return $string;
+}
+
+function clean_ascii_string($string){
+	if(is_string($string)){
+		$string = clean_replace_xmlentities($string);
+		$string = clean_replace_umlaute($string);
 		$string = preg_replace("/\s/",  "_", $string);
 		$string = preg_replace("/\W/",  "", $string);
 		$string = preg_replace("/_/",  " ", $string);
@@ -126,24 +144,8 @@ function clean_ascii_string($string){
 
 function clean_file_name($string){
 	if(is_string($string)){
-		$string = preg_replace("/&/", "", $string);
-		$string = preg_replace("/</", "", $string);
-		$string = preg_replace("/>/", "", $string);
-		$string = preg_replace("/Ö/", "Oe", $string);
-		$string = preg_replace("/Ä/", "Ae", $string);
-		$string = preg_replace("/Ü/", "Üe", $string);
-		$string = preg_replace("/ö/", "oe", $string);
-		$string = preg_replace("/ä/", "ae", $string);
-		$string = preg_replace("/ü/", "ue", $string);
-		$string = preg_replace("/ß/", "ss", $string);
-		$string = preg_replace("/É/", "E", $string);
-		$string = preg_replace("/È/", "E", $string);
-		$string = preg_replace("/é/", "e", $string);
-		$string = preg_replace("/è/", "e", $string);
-		$string = preg_replace("/Á/", "A", $string);
-		$string = preg_replace("/À/", "A", $string);
-		$string = preg_replace("/á/", "a", $string);
-		$string = preg_replace("/à/", "a", $string);
+		$string = clean_replace_xmlentities($string);
+		$string = clean_replace_umlaute($string);
 		$string = preg_replace("/\s/",  "_", $string);
 	}
 	return $string;
