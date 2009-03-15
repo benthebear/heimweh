@@ -1,6 +1,13 @@
 #
-# Apache/PHP/Heimweh settings:
+# Apache/PHP/Drupal settings:
 #
+
+<Files admin*>
+AuthType Basic
+AuthName "Heimweh Admin Area"
+AuthUserFile /Applications/MAMP/htdocs/heimweh/.htusers
+Require user Admin
+</Files>
 
 
 
@@ -23,6 +30,7 @@ DirectoryIndex index.php
 
 # Override PHP settings. More in sites/default/settings.php
 # but the following cannot be changed at runtime.
+
 
 # PHP 5, Apache 1 and 2.
 <IfModule mod_php5.c>
@@ -60,28 +68,21 @@ DirectoryIndex index.php
   # (http://example.com/... will be redirected to http://www.example.com/...)
   # adapt and uncomment the following:
   # RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
-  # RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
-  #
-  # To redirect all users to access the site WITHOUT the 'www.' prefix,
-  # (http://www.example.com/... will be redirected to http://example.com/...)
-  # uncomment and adapt the following:
-  #rewriteCond %{HTTP_HOST} ^cybercaesar\.de$ [NC]
-  #RewriteRule ^(.*)$ http://anmutunddemut.de/$1 [L,R=301]
+  # RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301] 
   
   # Modify the RewriteBase if you are using Drupal in a subdirectory or in a
   # VirtualDocumentRoot and the rewrite rules are not working properly.
   # For example if your site is at http://example.com/drupal uncomment and
   # modify the following line:
-  RewriteBase /heimweh
-  #
-  # If your site is running in a VirtualDocumentRoot at http://example.com/,
-  # uncomment the following line:
-  # RewriteBase /heimweh 
+  RewriteBase /heimweh  
 
-  # Rewrite URLs of the form 'index.php?q=x'.
+  # If your site is running in a VirtualDocumentRoot at http://example.com/,
+  # uncomment the following line: 
+
+  # Rewrite URLs of the form 'index.php?q=x'.  
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+
 </IfModule>
 
-# $Id: .htaccess,v 1.90 2007/10/05 14:43:23 dries Exp $

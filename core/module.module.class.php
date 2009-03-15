@@ -14,8 +14,8 @@
 class module{
 
 	public function menu ($path, $theme){
-		$data[] = $path;
-		$data[] = "Ich war hier";
+		$data["q"] = $path;
+		$data["message"] = "Ich war hier";
 		theme_call_page($theme, "index", $data);
 	}
 }

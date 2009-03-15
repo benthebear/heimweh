@@ -37,7 +37,8 @@ class heimweh{
 	public function create_path(){
 		// If the path is set, use it
 		if(isset($_GET["q"])){
-			$path = explode("/", $_GET["q"]);
+			$q = sanitize_text($_GET["q"]);
+			$path = explode("/", $q);
 			//print_r ($path);
 		// If the path isn't set use core-Module
 		}else{
@@ -55,6 +56,7 @@ class heimweh{
 	public function load_modules(){
 		include("modules/node.module.class.php");
 		include("modules/archive.module.class.php");
+		include("modules/tests.module.class.php");
 	}
 
 	/**

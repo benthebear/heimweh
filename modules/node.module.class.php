@@ -13,8 +13,8 @@
 class node extends module  {
 	
 	public function menu ($path, $theme){
-		$data[] = $path;
-		$data[] = "Ich bin eine Node";
+		$data["q"] = $path;
+		$data["message"] = "Ich bin eine Node";
 		theme_call_page($theme, "index", $data);
 	}
 	
