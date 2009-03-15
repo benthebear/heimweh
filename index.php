@@ -33,12 +33,11 @@
 //phpinfo();
 
 // Loading Core Functions
-include("core/functions.php");
-include("core/theme.php");
+include("core/functions.inc");
+include("core/theme.inc");
 
 // Loading Core Classes
-include("core/heimweh.class.php");
-include("core/module.module.class.php");
+include("core/heimweh.inc");
 
 $heimweh = new heimweh();
 $heimweh->call_menu();

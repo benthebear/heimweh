@@ -54,9 +54,11 @@ class heimweh{
 	 * 
 	 */
 	public function load_modules(){
-		include("modules/node.module.class.php");
-		include("modules/archive.module.class.php");
-		include("modules/tests.module.class.php");
+		include("core/module.module");
+		include("core/admin.module");
+		include("modules/node.module");
+		include("modules/archive.module");
+		include("modules/tests.module");
 	}
 
 	/**

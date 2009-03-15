@@ -1,0 +1,10 @@
+<?
+
+class tests extends module {
+	
+	public function menu ($path, $theme){
+		$data["q"] = $path;
+		$data["message"] = "Ich bin ein Test";
+		theme_call_page($theme, "test", $data);
+	}
+}

@@ -1,0 +1,11 @@
+<?
+
+
+class admin extends module {
+	
+	public function menu ($path, $theme){
+		$data["q"] = $path;
+		$data["message"] = "Ich bin der Admin";
+		theme_call_page("admin", "index", $data);
+	}
+}
