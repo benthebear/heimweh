@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT document (created | changed | title | text | alias | topics | teaserimage  |  comments | blogreactions | counter) >
+<!ATTLIST document 
+    type (page | story | bookmark | moblog | quote) #REQUIRED
+    nid CDATA #REQUIRED>
