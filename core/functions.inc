@@ -206,3 +206,13 @@ function literalArray2numericArray($literalArray){
 	}
 	return $numericArray;
 }
+
+// ############# XML Functions
+function xml_is_wellformed($string){
+	$xml = @simplexml_load_string($string);				
+	if(get_class($xml)!="SimpleXMLElement"){
+		return false;
+	}else{
+		return true;
+	}
+}
