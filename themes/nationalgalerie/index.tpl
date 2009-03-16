@@ -1,5 +1,5 @@
-<?include("header.php");?>
-<?include("sidebar.php");?>
+<?include("header.tpl");?>
+<?include("sidebar.tpl");?>
 
 <div id="arena">
 <h2>I'am the center!</h2>
@@ -10,4 +10,4 @@
 </pre>
 </div>
 
-<?include("footer.php");?>
+<?include("footer.tpl");?>
