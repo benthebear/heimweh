@@ -15,11 +15,17 @@ class document extends module  {
 	public function menu ($path, $theme){
 		$data["q"] = $path;
 		$data["message"] = "Ich bin ein Dokument";
+		// If the path contains two arguments and the second is an in, go load the document!
 		if(count($path)==2){
 			$document = $this->get_document($path[1]);
 			$data["document"] = $document;
+			theme_call_page($theme, "single", $data);
+			return $data;
+		}else{
+			theme_call_page($theme, "index", $data);
+			return $data;
 		}
-		theme_call_page($theme, "index", $data);
+		return $data;
 	}
 	
 	public function get_document($id){
