@@ -30,7 +30,17 @@
  * 
  */
 
-//phpinfo();
+// Set Constants for Database
+define("DATABASE_SERVER", "localhost");
+define("DATABASE_USER", "root");
+define("DATABASE_PASSWORD", "root");
+define("DATABASE_DATABASE", "heimweh");
+define("DATABASE_PREFIX", "heimweh_");
+
+// Connect to Database Server
+$db = mysql_connect(DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD);
+// Connect to Heimweh Database
+mysql_select_db(DATABASE_DATABASE);
 
 // Loading Core Functions
 include("core/functions.inc");

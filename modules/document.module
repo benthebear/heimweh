@@ -1,7 +1,7 @@
 <?
 
 /**
- * Node Module of Heimweh CMS
+ * Document Module of Heimweh CMS
  * 
  * Organizes Loading, Editing and Saving of Content Objects.
  * 
@@ -15,7 +15,18 @@ class document extends module  {
 	public function menu ($path, $theme){
 		$data["q"] = $path;
 		$data["message"] = "Ich bin ein Dokument";
+		if(count($path)==2){
+			$document = $this->get_document($path[1]);
+			$data["document"] = $document;
+		}
 		theme_call_page($theme, "index", $data);
+	}
+	
+	public function get_document($id){
+		print "Try to get Document $id";
+		$result = mysql_query("SELECT * FROM ".DATABASE_PREFIX."documents WHERE id='$id'");
+		$result = mysql_fetch_assoc($result);
+		return $result;
 	}
 	
 }
