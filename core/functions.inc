@@ -197,6 +197,7 @@ function is_subclass($descendant, $ancestor){
 
 
 
+
 // ############# Array Functions
 
 function literalArray2numericArray($literalArray){
@@ -207,7 +208,10 @@ function literalArray2numericArray($literalArray){
 	return $numericArray;
 }
 
+
+
 // ############# XML Functions
+
 function xml_is_wellformed($string){
 	$xml = @simplexml_load_string($string);				
 	if(get_class($xml)!="SimpleXMLElement"){
@@ -215,4 +219,10 @@ function xml_is_wellformed($string){
 	}else{
 		return true;
 	}
+}
+
+// ############# Server Variables Functions
+
+function get_base(){
+	return ereg_replace("index.php", "", 	$_SERVER["SCRIPT_NAME"]);
 }
