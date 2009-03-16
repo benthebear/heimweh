@@ -10,11 +10,11 @@
  *
  */
 
-class node extends module  {
+class document extends module  {
 	
 	public function menu ($path, $theme){
 		$data["q"] = $path;
-		$data["message"] = "Ich bin eine Node";
+		$data["message"] = "Ich bin ein Dokument";
 		theme_call_page($theme, "index", $data);
 	}
 	
