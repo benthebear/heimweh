@@ -12,24 +12,29 @@
 
 class document extends module  {
 	
+	
 	public function menu ($path, $theme){
 		$data["q"] = $path;
 		$data["message"] = "Ich bin ein Dokument";
-		// If the path contains two arguments and the second is an in, go load the document!
+		
 		if(count($path)==2){
+			// If the path contains two arguments and the second is an in, go load the document!
 			$document = $this->get_document($path[1]);
 			$data["document"] = $document;
 			theme_call_page($theme, "single", $data);
 			return $data;
+	
 		}else{
+			// Otherwise go to the index page	
 			theme_call_page($theme, "index", $data);
 			return $data;
 		}
 		return $data;
 	}
 	
+	
 	public function get_document($id){
-		print "Try to get Document $id";
+		//print "Try to get Document $id";
 		$result = mysql_query("SELECT * FROM ".DATABASE_PREFIX."documents WHERE id='$id'");
 		$result = mysql_fetch_assoc($result);
 		return $result;
