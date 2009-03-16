@@ -1,8 +1,15 @@
 <?
 
 
+/**
+ * Main Class for the Heimweh Admin Area
+ * 
+ * @author Benjamin Birkenhake <benjamin@birkenhake.org>
+ * @package Heimweh
+ *
+ */
 class admin extends module {
-	
+		
 	public function menu ($path, $theme){
 		$data["q"] = $path;
 		$data["message"] = "Ich bin der Admin";
