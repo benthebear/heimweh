@@ -9,41 +9,43 @@
  *
  */
 class admin extends module {
-		
+
 	public function menu ($path, $theme){
 		$data["q"] = $path;
 		$data["message"][] = "Ich bin der Admin";
-		
+
 		if(isset($_POST["submit"])){
-			// If on of the submit-buttons has been pressed, the request is processed
-			$data = array_merge($data, $this->process_submit());		
-		
+			// If one of the submit-buttons has been pressed, the request is processed
+			$data = $this->process_submit($data);
+
 		}elseif (count($path)==2){
 			$document = new document();
-			 $doc = $document->get_document($path[1]);
-			 $data["document"] = $doc["xml"];
+			$doc = $document->get_document($path[1]);
+			$data["document"] = $doc["xml"];
 		}else{
 			// Otherwise an new and empty Document is created
-			$data = array_merge($data, $this->get_default_document());
+			$data = $this->get_default_document($data);
 		}
-		
+
 		theme_call_page("admin", "index", $data);
 	}
-	
-	protected function process_submit(){
-			$data["submit"] = $_POST["submit"];
-			$data["document"] = $_POST["document"];		
-				
-			if(xml_is_wellformed($data["document"])){
-				$data["message"][] = "Your document is wellformed";
-			}else{
-				$data["message"][] = "Your document is NOT wellformed";
-			}
-			return $data;
+
+	protected function process_submit($data){
+		$data["submit"] = $_POST["submit"];
+		$data["document"] = $_POST["document"];
+
+		if(xml_is_wellformed($data["document"])){
+			// Document is only further processed of it is wellformed
+			$data["message"][] = "Your document is wellformed";
+		}else{
+			// Otherwise we return the document with an error message
+			$data["message"][] = "Your document is NOT wellformed";
+		}
+		return $data;
 	}
-	
-	protected function get_default_document(){
-		$data["document"] = "<document>\n\t<title></title>\n\t<text>\n\n\t</text>\n</document>";
+
+	protected function get_default_document($data){
+		$data["document"] = "<document type=\"draft\">\n\t<title></title>\n\t<text>\n\n\t</text>\n</document>";
 		return $data;
 	}
 }

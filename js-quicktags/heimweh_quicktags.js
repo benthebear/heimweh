@@ -78,7 +78,7 @@ edButtons.push(
 	)
 ); // special case
 
-edButtons.push(
+/*edButtons.push(
 	new edButton(
 		'ed_ext_link'
 		,'Ext. Link'
@@ -86,7 +86,7 @@ edButtons.push(
 		,'</a>'
 		,'e'
 	)
-); // special case
+);*/ // special case
 
 edButtons.push(
 	new edButton(
@@ -453,7 +453,7 @@ function edToolbar(which) {
 	if (edShowExtraCookie()) {
 		document.write(
 			'<input type="button" id="ed_close_' + which + '" class="ed_button" onclick="edCloseAllTags(\'' + which + '\');" value="Close Tags" />'
-			+ '<input type="button" id="ed_spell_' + which + '" class="ed_button" onclick="edSpell(\'' + which + '\');" value="Dict" />'
+			//+ '<input type="button" id="ed_spell_' + which + '" class="ed_button" onclick="edSpell(\'' + which + '\');" value="Dict" />'
 			+ '<input type="button" id="ed_extra_show_' + which + '" class="ed_button" onclick="edShowExtra(\'' + which + '\')" value="&raquo;" style="visibility: hidden;" />'
 			+ '</span><br />'
 			+ '<span id="ed_extra_buttons_' + which + '">'
@@ -463,7 +463,7 @@ function edToolbar(which) {
 	else {
 		document.write(
 			'<input type="button" id="ed_close_' + which + '" class="ed_button" onclick="edCloseAllTags(\'' + which + '\');" value="Close Tags" />'
-			+ '<input type="button" id="ed_spell_' + which + '" class="ed_button" onclick="edSpell(\'' + which + '\');" value="Dict" />'
+			//+ '<input type="button" id="ed_spell_' + which + '" class="ed_button" onclick="edSpell(\'' + which + '\');" value="Dict" />'
 			+ '<input type="button" id="ed_extra_show_' + which + '" class="ed_button" onclick="edShowExtra(\'' + which + '\')" value="&raquo;" />'
 			+ '</span><br />'
 			+ '<span id="ed_extra_buttons_' + which + '" style="display: none;">'
