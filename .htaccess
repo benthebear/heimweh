@@ -2,12 +2,7 @@
 # Apache/PHP/Drupal settings:
 #
 
-<Files admin*>
-AuthType Basic
-AuthName "Heimweh Admin Area"
-AuthUserFile /Applications/MAMP/htdocs/heimweh/.htusers
-Require user Admin
-</Files>
+
 
 
 

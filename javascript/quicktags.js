@@ -50,6 +50,16 @@ function edButton(id, display, tagStart, tagEnd, access, open) {
 
 edButtons.push(
 	new edButton(
+		'ed_tab'
+		,'Tab'
+		,'	'
+		,''
+		,'tab'
+	)
+);
+
+edButtons.push(
+	new edButton(
 		'ed_bold'
 		,'B'
 		,'<strong>'

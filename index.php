@@ -36,9 +36,13 @@ define("DATABASE_USER", "root");
 define("DATABASE_PASSWORD", "root");
 define("DATABASE_DATABASE", "heimweh");
 define("DATABASE_PREFIX", "heimweh_");
+define("ADMIN_PASSWORD", "12ced2b7254f998a728f5ba70c40921e");
+define("DATETIME", "Y-m-d H:i:s");
 
 // Connect to Database Server
 $db = mysql_connect(DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD);
+// Instantly forcing a UFT8 Client Connection #schei�encoding 
+mysql_query('SET NAMES "utf8"', $db);
 // Connect to Heimweh Database
 mysql_select_db(DATABASE_DATABASE);
 

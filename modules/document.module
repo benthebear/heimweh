@@ -37,6 +37,7 @@ class document extends module  {
 		//print "Try to get Document $id";
 		$result = mysql_query("SELECT * FROM ".DATABASE_PREFIX."documents WHERE id='$id'");
 		$result = mysql_fetch_assoc($result);
+		$result["xml"] = stripslashes($result["xml"]);
 		return $result;
 	}
 	

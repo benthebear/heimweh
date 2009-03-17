@@ -12,16 +12,28 @@ class admin extends module {
 
 	public function menu ($path, $theme){
 		$data["q"] = $path;
-		$data["message"][] = "Ich bin der Admin";
+		
+		// Loading Admin Password;
 
 		if(isset($_POST["submit"])){
 			// If one of the submit-buttons has been pressed, the request is processed
-			$data = $this->process_submit($data);
+			if(md5($_POST["password"])==ADMIN_PASSWORD){
+				$data["message"][] = "You're the Admin";
+				$data = $this->process_submit($data);
+			}else{
+				$data["message"][] = "You're NOT the Admin";
+				$data["document"] = $_POST["document"];
+			}
 
-		}elseif (count($path)==2){
+		}elseif(count($path)==3 and $path[1]=="edit"){
 			$document = new document();
-			$doc = $document->get_document($path[1]);
-			$data["document"] = $doc["xml"];
+			$doc = $document->get_document($path[2]);
+			if($doc!=""){
+					$data["document"] = $doc["xml"];				
+			}else{
+				$data["message"][] = "Your document does NOT exist";
+				$data = $this->get_default_document($data);
+			}
 		}else{
 			// Otherwise an new and empty Document is created
 			$data = $this->get_default_document($data);
@@ -32,11 +44,13 @@ class admin extends module {
 
 	protected function process_submit($data){
 		$data["submit"] = $_POST["submit"];
+		$data["document_post"] = $_POST["document"];
 		$data["document"] = $_POST["document"];
-
+		
 		if(xml_is_wellformed($data["document"])){
 			// Document is only further processed of it is wellformed
 			$data["message"][] = "Your document is wellformed";
+			$data = $this->save_document(simplexml_load_string($data["document"]), $data);
 		}else{
 			// Otherwise we return the document with an error message
 			$data["message"][] = "Your document is NOT wellformed";
@@ -45,7 +59,46 @@ class admin extends module {
 	}
 
 	protected function get_default_document($data){
-		$data["document"] = "<document type=\"draft\">\n\t<title></title>\n\t<text>\n\n\t</text>\n</document>";
+		$string = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><document type=\"draft\" id=\"".$this->create_id()."\">\n\t<created>".date(DATETIME)."</created>\n\t<title> </title>\n\t<text>\n\n\t</text>\n</document>";
+		$xml = simplexml_load_string($string);
+		$data["document"] = $xml->asXML();
 		return $data;
 	}
+	
+	protected function save_document($document, $data){
+		if(!$document["id"]){
+			$data["newid"] = $this->create_id();
+			$document->addAttribute("id", $data["newid"]);
+		}
+		if(!$document->created){			
+			$document->addChild("created", date(DATETIME));
+		}
+		if(!$document->title){			
+			$document->addChild("title", " ");
+		}
+		mysql_query("DELETE FROM ".DATABASE_PREFIX."documents WHERE id='".$document["id"]."'");
+		$sql = "INSERT INTO ".DATABASE_PREFIX."documents (`id` , `date` , `xml`) VALUES ('".$document["id"]."', '".$document->created."', '".mysql_real_escape_string($document->asXML())."')";
+		$data["sql"][] = $sql;
+		mysql_query($sql);
+		$data["document"] = $document->asXML();
+		return $data;
+		
+	}
+	
+	protected function create_id(){
+		$result = mysql_query("SELECT id FROM ".DATABASE_PREFIX."documents ORDER BY id DESC LIMIT 1");
+		$result = mysql_fetch_assoc($result);
+		if(count($result)>0){
+			return intval($result["id"])+1;
+		}else{
+			return "1";
+		}
+	}
+	
+
+	
+	
+	
+	
+	
 }
