@@ -2,8 +2,9 @@
 <?include("sidebar.tpl");?>
 
 <div id="arena">
-<h2>I'am the center!</h2>
-
+<? theme_foreach_template("nationalgalerie", "teaser", $data["documents"]); ?>
 </div>
+
+<?//include("rawdata.tpl");?>
 
 <?include("footer.tpl");?>

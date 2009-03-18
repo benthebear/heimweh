@@ -82,6 +82,16 @@ h1 {
 	left:850px;
 }
 
+.teaser {
+	min-height:220px;
+	margin-bottom:2em;
+}
+
+.teaser .teaserimage{
+	width:200px;
+}
+
+
 /* == Inline Elements ==*/
 
 
@@ -92,4 +102,12 @@ h1 {
 
 hr.break{
 	display:none;
+}
+
+/* Footer */
+.footer {
+	margin-top:100px;
+	margin-left:200px;
+	padding-left:50px;
+	margin-bottem:200px;
 }
