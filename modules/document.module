@@ -21,7 +21,11 @@ class document extends module  {
 			// If the path contains two arguments and the second is an in, go load the document!
 			$document = $this->get_document($path[1]);
 			$data["document"] = $document;
-			theme_call_page($theme, "single", $data);
+			if(xml_is_wellformed($document["xml"])){
+				theme_call_page($theme, "single", $data);
+			}else{
+				theme_call_page($theme, "404", $data);
+			}
 			return $data;
 	
 		}else{
