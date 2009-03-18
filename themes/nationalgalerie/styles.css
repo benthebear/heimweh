@@ -1,0 +1,95 @@
+/* ========== At first, set Defaults back to zero ========== */
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,table,tr,td,thead,tbody{
+	margin:0px; 
+	padding:0px; 
+	font-weight:normal;
+	border:0px;
+}
+
+ul, ol{
+	padding-left:2em;
+}
+
+/* == Now the basics == */
+
+html, body{
+	font:100%/1.45 Georgia, serif;		
+}
+
+a{
+	text-decoration:none;
+}
+
+a:hover{
+	text-decoration:underline;
+}
+
+h1 {
+	font-size:18px;
+	margin:3em 0em 2em 1em;
+}
+
+/* == Sidebar == */
+
+#sidebar{
+	width:210px;
+	float:left;
+	
+	height:100%;
+	
+}
+
+#sidebar ul{
+	list-style-type:none;
+}
+
+#sidebar img{
+	width:200px;
+}
+
+
+#sidebar a{
+	color:grey;
+	
+}
+
+#sidebar a:hover{
+	color:black;
+	text-decoration:none;
+}
+
+/* Arena */
+
+#arena{
+	margin-left:200px;
+	padding-left:50px;
+	padding-top:50px;
+	border-left:1px solid lightgrey;	
+	
+}
+
+#arena .text{
+	width:30em;
+}
+
+#arena .text img{
+	max-width:400px;
+}
+
+
+.teaserimage{
+	position:absolute;
+	left:850px;
+}
+
+/* == Inline Elements ==*/
+
+
+
+.text p{
+	margin-bottom:2em;
+}
+
+hr.break{
+	display:none;
+}

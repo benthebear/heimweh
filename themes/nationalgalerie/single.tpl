@@ -1,13 +1,16 @@
 <?include("header.tpl");?>
 <?include("sidebar.tpl");?>
-
+<?$xml = simplexml_load_string($data["document"]["xml"])?>
 <div id="arena">
-<h2>I'am the center!</h2>
+<?if(isset($xml->teaserimage)){ ?><img class="teaserimage" src="<?=$xml->teaserimage["url"]?>" /><?}?>
+<h2><?=$xml->title?></h2>
 
-<h2>Data:</h2>
-<pre>
-<?print_r($data);?>
-</pre>
+<div class="text">
+<?=$xml->text->asXML()?>
 </div>
 
-<?include("footer.tpl");?>
+<? //include("rawdata.tpl");?>
+
+</div>
+
+<? //include("footer.tpl");?>

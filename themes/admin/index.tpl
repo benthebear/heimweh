@@ -19,10 +19,14 @@
 <input name="submit" type="submit" value="Save" />
 <input name="submit" type="submit" value="Buffer" />
 <input name="submit" type="submit" value="Publish" />
-
+<?
+$xml = simplexml_load_string($data["document"]);
+print "<a href='/heimweh/document/".$xml["id"]."'>View No. ".$xml["id"]."</a>";
+?>
 </p>
 
 </form>
+
 
 <?if(isset($data["message"])){?>
 <div class="message">
@@ -37,7 +41,7 @@
 
 <div> 
 <pre>
-<? print_r($data); ?>
+<? //print_r($data); ?>
 </pre>
 </div>
 
