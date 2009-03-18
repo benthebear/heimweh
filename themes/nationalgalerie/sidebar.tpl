@@ -1,7 +1,7 @@
 <div id="sidebar">
-<!-- <img src="<?=get_base()?>themes/nationalgalerie/anmutunddemut-logo.jpg"> -->
+<!-- <img src="<?=env_get_base()?>themes/nationalgalerie/anmutunddemut-logo.jpg"> -->
 
-<h1>anmut und demut</h1>
+<h1><a href="<?=env_get_base()?>">anmut und demut</a></h1>
 
 <ul>
 

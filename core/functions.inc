@@ -155,7 +155,7 @@ function clean_file_name($string){
 }
 
 
-function add_leading_zeros($string, $n){
+function string_add_leading_zeros($string, $n){
 	$null = "0";
 	for($i=1; $i<=$n; $i++){
 		$add = $add.$null;
@@ -173,7 +173,7 @@ function add_leading_zeros($string, $n){
  * @param object $class   // Any given Object
  * @return array $classes // a numeric array containing all ancestors
  */
-function get_ancestors ($class) {
+function object_get_ancestors ($class) {
 	for ($classes[] = $class; $class = get_parent_class ($class); $classes[] = $class);
 	return $classes;
 }
@@ -186,7 +186,7 @@ function get_ancestors ($class) {
  * @param string $ancestor		//name of the possible superclass
  * @return bool
  */
-function is_subclass($descendant, $ancestor){
+function object_is_subclass($descendant, $ancestor){
 	$ancestors = get_ancestors($descendant);
 	if(in_array($ancestor, $ancestors)){
 		return true;
@@ -200,7 +200,7 @@ function is_subclass($descendant, $ancestor){
 
 // ############# Array Functions
 
-function literalArray2numericArray($literalArray){
+function array_literalArray2numericArray($literalArray){
 	$numericArray = array();
 	foreach ($literalArray as $entry){
 		$numericArray[] = $entry;
@@ -223,6 +223,6 @@ function xml_is_wellformed($string){
 
 // ############# Server Variables Functions
 
-function get_base(){
+function env_get_base(){
 	return ereg_replace("index.php", "", 	$_SERVER["SCRIPT_NAME"]);
 }
