@@ -8,6 +8,7 @@
  */
 
 //############# Debugging Functions
+
 function debug_var($var){
 	print ("<pre>");
 	print_r($var);

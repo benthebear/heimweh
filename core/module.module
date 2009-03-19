@@ -14,8 +14,7 @@
 class module{
 
 	public function menu ($path, $theme){
-		$data["q"] = $path;
-		$data["message"] = "Ich war hier";
+		$data["q"] = $path;		
 		$data = $this->get_last_documents($data);
 		theme_call_page($theme, "index", $data);
 	}
