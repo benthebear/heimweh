@@ -25,13 +25,14 @@ function theme_call_page($theme, $page, $data = array()){
  * @param string $template // The name of the template. Esp. the name of the template file WITHOUT the .tpl Extension
  * @param array $array // An array with items, like documents, comments and such.
  */
-function theme_foreach_template($theme, $template, $array){
-	if(is_array($array)){
-		foreach ($array as $item){
+function theme_foreach_template($theme, $template, $mixed){
+	// First check wether the $mixed is foreachable
+	if(count($mixed)>0){		
+		foreach ($mixed as $item){
 			include("themes/".$theme."/".$template.".tpl");
 		}
 	}else{
-		print "<!-- This hasn't been an array \n -->";
+		print "<!-- This hasn't been an array -->";
 	}
 }
 

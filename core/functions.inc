@@ -11,7 +11,11 @@
 
 function debug_var($var){
 	print ("<pre>");
+	ob_start();
 	print_r($var);
+	$output = ob_get_contents();	
+	ob_end_clean();
+	print htmlspecialchars($output, ENT_COMPAT, "UTF-8");
 	print ("</pre>\n");
 }
 

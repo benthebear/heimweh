@@ -20,7 +20,7 @@ class module{
 	}
 	
 	protected function get_last_documents($data){
-		$sql = "SELECT * FROM ".DATABASE_PREFIX."documents ORDER BY date DESC LIMIT 10";
+		$sql = "SELECT * FROM ".DATABASE_PREFIX."documents ORDER BY date DESC LIMIT 100";
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_assoc($result)){
 			$data["documents"][] = $row;

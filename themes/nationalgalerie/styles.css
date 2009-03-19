@@ -68,18 +68,18 @@ h1 {
 	
 }
 
-#arena .text{
+.text{
 	width:30em;
 }
 
-#arena .text img{
+.text img{
 	max-width:400px;
 }
 
 
 .teaserimage{
 	position:absolute;
-	left:850px;
+	left:820px;
 }
 
 /* == Teaser ==*/
@@ -126,6 +126,18 @@ h1 {
 hr.break{
 	display:none;
 }
+
+
+
+.text p.volleBreitseite{
+	width:800px;
+	
+}
+
+.text p.volleBreitseite img{
+	max-width:800px;
+}
+
 
 /* == Footer == */
 .footer {
