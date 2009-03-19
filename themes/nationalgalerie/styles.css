@@ -82,6 +82,8 @@ h1 {
 	left:850px;
 }
 
+/* == Teaser ==*/
+
 .teaser {
 	min-height:220px;
 	margin-bottom:2em;
@@ -89,6 +91,10 @@ h1 {
 
 .teaser .teaserimage{
 	width:200px;
+}
+
+.teaser .readon{
+	font-style:italic;
 }
 
 

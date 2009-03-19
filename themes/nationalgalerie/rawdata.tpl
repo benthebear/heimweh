@@ -1,4 +1,4 @@
-<h2><a href="javascript:shownhide('rawdata');">Data</a>:</h2>
+<p><a href="javascript:shownhide('rawdata');">Data</a></p>
 <pre id="rawdata" style="visibility:hidden; display:none">
 <?print_r($data);?>
 </pre>
