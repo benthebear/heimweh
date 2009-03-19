@@ -1,0 +1,16 @@
+<? 
+
+
+class comment extends module{
+	
+	
+	public function menu($path, $theme){
+		
+	}
+	
+	
+	
+	
+	
+	
+}
