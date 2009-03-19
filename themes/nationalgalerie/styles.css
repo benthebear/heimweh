@@ -1,5 +1,5 @@
 /* ========== At first, set Defaults back to zero ========== */
-ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,input,table,tr,td,thead,tbody{
+ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,body,html,p,blockquote,fieldset,table,tr,td,thead,tbody{
 	margin:0px; 
 	padding:0px; 
 	font-weight:normal;
@@ -85,15 +85,24 @@ h1 {
 /* == Teaser ==*/
 
 .teaser {
-	min-height:220px;
+	min-height:250px;
 	margin-bottom:2em;
 }
 
 .teaser .teaserimage{
+	margin-top:-1.5em;
+}
+
+.teaser .teaserimage img{
 	width:200px;
 }
 
 .teaser .readon{
+	font-style:italic;
+}
+
+.teaser .meta{
+	color:grey;
 	font-style:italic;
 }
 
@@ -116,4 +125,50 @@ hr.break{
 	margin-left:200px;
 	padding-left:50px;
 	margin-bottem:200px;
+}
+
+/* == Comments == */
+
+#comments{
+	margin-top:10em;
+	margin-bottom:4em;
+}
+
+#comments h3{
+	margin-bottom:1em;
+}
+
+.comment{
+	width:30em;
+	margin-bottom:2em;	
+}
+
+.commentator{
+	margin-top:-2em;
+	text-align:right;
+	font-style:italic;
+}
+
+/* == Comments Form== */
+
+#comments form{
+	margin-top:4em;
+}
+
+#comments textarea{
+	font:100%/1.45 Georgia, serif;		
+	width:30em;
+	height:10em;
+}
+
+#comments input{
+	font:100%/1.45 Georgia, serif;	
+	width:15em;
+	margin-top:0.5em;
+}
+
+#comments .submit{
+	border:1px solid grey;
+	padding-top:5px;
+	padding-bottom:5px;
 }

@@ -26,8 +26,12 @@ function theme_call_page($theme, $page, $data = array()){
  * @param array $array // An array with items, like documents, comments and such.
  */
 function theme_foreach_template($theme, $template, $array){
-	foreach ($array as $item){
-		include("themes/".$theme."/".$template.".tpl");
+	if(is_array($array)){
+		foreach ($array as $item){
+			include("themes/".$theme."/".$template.".tpl");
+		}
+	}else{
+		print "<!-- This hasn't been an array \n -->";
 	}
 }
 
@@ -40,7 +44,7 @@ function theme_foreach_template($theme, $template, $array){
  * @param string $text // The Text containing HTML
  * @return string
  */
-function theme_get_teaser_text($text){	
+function theme_get_teaser_text($text){
 	if(count($array = explode('<hr class="break"/>', $text))>1){
 		// First try to cut the teaser by the <hr>
 		return strip_tags($array[0], "<a> <i> <b> <em> <strong>");
