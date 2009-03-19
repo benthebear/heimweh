@@ -1,0 +1,28 @@
+<?
+
+/**
+ * Module for generating Feeds from Heimweh
+ * 
+ * 
+ * 
+ * @author Benjamin Birkenhake <benjamin@birkenhake.org>
+ * @package Heimweh
+ *
+ */
+
+
+class feeds extends module {
+
+	public function menu ($path, $theme){
+		$data["q"] = $path;
+		
+		if (count($path) == 2 and $path[1]=="index"){
+			$data = $this->get_last_documents($data);
+			theme_call_page("feeds", "atom", $data);
+		}else{
+			theme_call_page($theme, "404", $data);
+		}
+	}
+	
+	
+}

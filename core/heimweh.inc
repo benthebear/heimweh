@@ -58,6 +58,7 @@ class heimweh{
 		include("core/admin.module");
 		include("modules/document.module");
 		include("modules/archive.module");
+		include("modules/feeds.module");
 		include("modules/tests.module");
 	}
 
