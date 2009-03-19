@@ -111,7 +111,15 @@ h1 {
 
 
 
-.text p{
+.text p,
+.text h3,
+.text h4,
+.text h5,
+.text h6,
+.text ol,
+.text ul,
+.text dl,
+.text table{
 	margin-bottom:2em;
 }
 
@@ -119,7 +127,7 @@ hr.break{
 	display:none;
 }
 
-/* Footer */
+/* == Footer == */
 .footer {
 	margin-top:100px;
 	margin-left:200px;

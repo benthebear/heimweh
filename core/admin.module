@@ -10,11 +10,15 @@
  */
 class admin extends module {
 
+	/**
+	 * Implementation of the Main Menu Method
+	 *
+	 * @param array $path
+	 * @param string $theme
+	 */
 	public function menu ($path, $theme){
-		$data["q"] = $path;
-		
-		// Loading Admin Password;
-
+		$data["q"] = $path;	
+	
 		if(isset($_POST["submit"])){
 			// If one of the submit-buttons has been pressed, the request is processed
 			if(md5($_POST["password"])==ADMIN_PASSWORD){
@@ -26,6 +30,7 @@ class admin extends module {
 			}
 
 		}elseif(count($path)==3 and $path[1]=="edit"){
+			// If a path like document/edit/4 came in, document no 4 is loaded to be edited
 			$document = new document();
 			$doc = $document->get_document($path[2]);
 			if($doc!=""){
@@ -36,12 +41,19 @@ class admin extends module {
 			}
 		}else{
 			// Otherwise an new and empty Document is created
-			$data = $this->get_default_document($data);
+			$data["document"] = $this->get_default_document();
 		}
 
 		theme_call_page("admin", "index", $data);
 	}
 
+	/**
+	 * If inside the Admin Area one of the submit buttons has been pressed, 
+	 * this function process the given Data.
+	 *
+	 * @param array $data
+	 * @return array
+	 */
 	protected function process_submit($data){
 		$data["submit"] = $_POST["submit"];
 		$data["document_post"] = $_POST["document"];
@@ -58,47 +70,70 @@ class admin extends module {
 		return $data;
 	}
 
-	protected function get_default_document($data){
+	/**
+	 * Returns the XML-String  of a default Document.
+	 *
+	 * @return string // Wellformed XML String of the default Document.
+	 */
+	protected function get_default_document(){
 		$string = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><document type=\"draft\" id=\"".$this->create_id()."\">\n\t<created>".date(DATETIME)."</created>\n\t<title> </title>\n\t<text>\n\n\t</text>\n</document>";
 		$xml = simplexml_load_string($string);
-		$data["document"] = $xml->asXML();
-		return $data;
+		return $xml->asXML();		
 	}
 	
+	/**
+	 * This function saves a wellformed Simple-XML Object
+	 *
+	 * @param simpleXML Objec $document
+	 * @param unknown_type $data
+	 * @return unknown
+	 */
 	protected function save_document($document, $data){
+		
+		// At first, be sure, that the document does have an ID and a Timestamp.
+		
 		if(!$document["id"]){
+			// If the document doesn't have an ID, the ID is created and added.
 			$data["newid"] = $this->create_id();
 			$document->addAttribute("id", $data["newid"]);
 		}
+		
 		if(!$document->created){			
+			// If the document doesn't have an Created Timestamp, the Timestamp is created and added.
 			$document->addChild("created", date(DATETIME));
-		}
-		if(!$document->title){			
-			$document->addChild("title", " ");
-		}
+		}		
+		
+		// Delete the old Document with the same ID
 		mysql_query("DELETE FROM ".DATABASE_PREFIX."documents WHERE id='".$document["id"]."'");
+		// Save the new document
 		$sql = "INSERT INTO ".DATABASE_PREFIX."documents (`id` , `date` , `xml`) VALUES ('".$document["id"]."', '".$document->created."', '".mysql_real_escape_string($document->asXML())."')";
 		$data["sql"][] = $sql;
 		mysql_query($sql);
+		
+		// Add XML-String of the Document to the data array and return it.
 		$data["document"] = $document->asXML();
 		return $data;
 		
 	}
 	
+	/**
+	 * This function creates a new ID for any given document.
+	 * 
+	 * IDs are integers counting upwards.
+	 *
+	 * @return integer // A unique ID
+	 */
 	protected function create_id(){
+		// Get the highest current ID
 		$result = mysql_query("SELECT id FROM ".DATABASE_PREFIX."documents ORDER BY id DESC LIMIT 1");
 		$result = mysql_fetch_assoc($result);
 		if(count($result)>0){
+			// Add one for the next ID
 			return intval($result["id"])+1;
 		}else{
+			// Or return 1
 			return "1";
 		}
 	}
-	
-
-	
-	
-	
-	
-	
+		
 }

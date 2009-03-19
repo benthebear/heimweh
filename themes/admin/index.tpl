@@ -2,7 +2,7 @@
 <title>Heimweh Admin Area</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="Generator" content="Heimweh 0.1"/>
-<link type="text/css" rel="stylesheet" media="all" href="<?=get_base()?>themes/admin/admin.css" />
+<link type="text/css" rel="stylesheet" media="all" href="<?=env_get_base()?>themes/admin/admin.css" />
 <script src="<?=env_get_base()?>javascript/quicktags.js" type="text/javascript"></script>
 <h1>Heimweh Admin Area</h1>
 
