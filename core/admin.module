@@ -112,6 +112,7 @@ class admin extends module {
 		$data["sql"][] = $sql;
 		mysql_query($sql);
 		
+		$data["message"][] = "Your Document has been saved recently";
 		// Add XML-String of the Document to the data array and return it.
 		$data["document"] = $document->asXML();
 		return $data;

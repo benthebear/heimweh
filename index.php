@@ -25,8 +25,10 @@
  * Stefan Auditor					audiens.de
  * Frank Westphal					frankwestphal.de
  * 
+ * Bring me the spriti, the son and the father, tell them their pillar of faith has ascended!
  * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
+ * @package Heimweh
  * 
  */
 
