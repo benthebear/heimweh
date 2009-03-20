@@ -2,7 +2,7 @@
 
 
 /**
- * Main Class of the Heimweh CMS
+ * Main Class of the Heimweh XML Content Storage and Rendering Thing
  * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
  * @package Heimweh
@@ -21,10 +21,18 @@ class heimweh{
 
 	
 	
-	public function __construct(){		
+	/**
+	 * Main Constructor of Heimweh
+	 *
+	 */
+	public function __construct(){
+		// At first, create the path
 		$this->create_path();
+		// Set default Theme
 		$this->theme = "nationalgalerie";
+		// Load all Modules
 		$this->load_modules();
+		// Set Modules to Attribute
 		$this->modules = $this->get_all_modules();
 	}
 	
@@ -49,17 +57,18 @@ class heimweh{
 
 
 	/**
-	 * Load all Modules
+	 * Load all Modules	
 	 * 
 	 * 
 	 */
 	public function load_modules(){
+		// Load Core Modules
 		include("core/module.module");
-		include("core/admin.module");
-		include("modules/document.module");
-		include("modules/archive.module");
-		include("modules/feeds.module");
-		include("modules/tests.module");
+		include("core/admin.module");	
+		// Load Everything in the Modules Folder
+		foreach (directory_to_array("modules") as $file){
+			include("modules/".$file);
+		}
 	}
 
 	/**
@@ -77,10 +86,21 @@ class heimweh{
 		return $modules;
 	}
 
+	/**
+	 * A general Function to invoke Hooks.
+	 * 
+	 * A hook is a Method of a Module-Class with a special name.
+	 * When a hook is invoked, all loaded Modules are checked, wether
+	 * they have a method, with the name of the hook and in case
+	 * the hook implementation in that module is called.
+	 *
+	 * @param unknown_type $hook
+	 */
 	public function invoke_hook($hook){
-
+		
 	}
 
+	
 	/**
 	 * Given a path and all Modules, this class invokes the Data-Switcher
 	 * 
@@ -93,10 +113,13 @@ class heimweh{
 	 * @param array $path
 	 */
 	public function call_menu(){
+		// If theres a module with the same name as the first part of the path,
+		// it's menu method is called
 		if(in_array($this->path[0], $this->modules)){
 			$class = new $this->path[0]();
 			$class->menu($this->path, $this->theme);
 		}else{
+			// Otherwise we send a 404
 			theme_call_page($this->theme, "404");
 		}
 	}
