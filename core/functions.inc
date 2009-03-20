@@ -3,6 +3,8 @@
 /**
  * A File contains several global Functions
  * 
+ * Most of these functions are only ocasionally used.
+ * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
  * @package Heimweh
  */
