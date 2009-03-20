@@ -48,7 +48,7 @@ mysql_select_db(DATABASE_DATABASE);
 
 // Loading Core Functions
 include("core/functions.inc");
-include("core/theme.inc");
+include("core/themengine.inc");
 
 // Loading Core Classes
 include("core/heimweh.inc");
