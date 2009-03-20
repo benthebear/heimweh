@@ -93,11 +93,23 @@ class heimweh{
 	 * When a hook is invoked, all loaded Modules are checked, wether
 	 * they have a method, with the name of the hook and in case
 	 * the hook implementation in that module is called.
+	 * 
+	 * The second parameter is an array containig several data.
+	 * This array may be enriched or manipulated by the hook.
+	 * In the end it will be returned.
 	 *
-	 * @param unknown_type $hook
+	 * @param string $hook // The name of the hook method
+	 * @param array $data // The main data array
 	 */
-	public function invoke_hook($hook){
-		
+	public function invoke_hook($hook, $data=array()){
+		foreach ($this->modules as $module) {
+			$object = new $module();
+			if(method_exists($object, $hook)){
+				$data = $object->$hook($data);
+			}
+			unset($object);
+		}
+		return $data;
 	}
 
 	
