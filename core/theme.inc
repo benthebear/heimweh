@@ -53,10 +53,10 @@ function theme_foreach_template($theme, $template, $mixed){
 	// First check wether the $mixed is foreachable
 	if(count($mixed)>0){		
 		foreach ($mixed as $item){
-			if(file_exists("themes/".$theme."/".$page.".tpl")){
+			if(file_exists("themes/".$theme."/".$template.".tpl")){
 				include("themes/".$theme."/".$template.".tpl");
 			}else{
-				print "<!-- The Template '$page' does not exist inside the Theme '$theme'  -->";
+				print "<!-- The Template '$template' does not exist inside the Theme '$theme'  -->";
 			}
 		}
 	}else{
