@@ -17,6 +17,7 @@
  * Marc Tönsing						marctv.de
  * Sven Heising						endeneu.de
  * Sebastian Munz					yo.lk
+ * Julia Sörgel						yol.lk
  * Konstantin Weiss				konnexus.net
  * Maurice Sand						fymmie.de
  * Arne Seemann						arnalyse.blogspot.com
@@ -43,7 +44,7 @@ define("DATETIME", "Y-m-d H:i:s");
 
 // Connect to Database Server
 $db = mysql_connect(DATABASE_SERVER, DATABASE_USER, DATABASE_PASSWORD);
-// Instantly forcing a UFT8 Client Connection #schei�encoding 
+// Instantly forcing a UFT8 Client Connection to avoid Schei�encoding 
 mysql_query('SET NAMES "utf8"', $db);
 // Connect to Heimweh Database
 mysql_select_db(DATABASE_DATABASE);
