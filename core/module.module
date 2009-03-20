@@ -13,14 +13,38 @@
 
 class module{
 
+	/**
+	 * Implementation of the Pseudo-Hook "Menu"
+	 * 
+	 * Actually it does not very much. 
+	 * Just get the latest documents and start the Themengine on the Homepage
+	 *
+	 * @param array $path // An array containing the request path
+	 * @param string $theme // The name of the currently selected Theme
+	 */
 	public function menu ($path, $theme){
 		$data["q"] = $path;		
 		$data = $this->get_last_documents($data);
 		theme_call_page($theme, "index", $data);
 	}
 	
-	protected function get_last_documents($data){
-		$sql = "SELECT * FROM ".DATABASE_PREFIX."documents ORDER BY date DESC LIMIT 100";
+	/**
+	 * This function fills the last $limit documents into the $data Array
+	 *
+	 * Only the documents before now are selected. 
+	 * So Documents with a publishing date in the future will be online in the future.
+	 * The Resulting Documents are filled in the $data-Array at the key "documents"
+	 * 
+	 * @param array $data
+	 * @param integer $limit
+	 * @return array $data
+	 */
+	protected function get_last_documents($data, $limit=100){
+		
+		// Only select the documents which are published before now
+		// order them by date
+		// and limit the ammount to $limit
+		$sql = "SELECT * FROM ".DATABASE_PREFIX."documents WHERE date < '".date(DATETIME)."' ORDER BY date DESC LIMIT $limit";
 		$result = mysql_query($sql);
 		while($row = mysql_fetch_assoc($result)){
 			$data["documents"][] = $row;

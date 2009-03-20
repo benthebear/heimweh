@@ -1,8 +1,8 @@
 <?
 /**
- * This file contains the theming function of Heimweh
+ * This file contains the Themengine of Heimweh
  * 
- * Themeing in Heimweh is extremely simple. 
+ * The Themengine of Heimweh is extremely simple. 
  * At any point in the Code (usually somewhere in a module)
  * the function theme_call_page() can be called to enter the
  * rendering process inside a Theme.
