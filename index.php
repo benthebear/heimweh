@@ -1,7 +1,7 @@
 <?
 
 /**
- * "Heimweh" is a Minimalistic XML Web Content Management System
+ * "Heimweh" is a Minimalistic XML Document Storage and Rendering Machine
  * 
  * I have to say thank you to all the great Developers who inspired this project by their passion.
  * Especially those who are Part of Drupal.org Wordpress.org Zeit.de and Digitalkombinat.net
@@ -11,7 +11,7 @@
  * Marcus Abel						digitalkombinat.net
  * Thomas Baumann					digitalkombinat.net
  * Sebastian Ermshaus 		digitalkombinat.net
- * Sascha Hagemann				digitalkombiant.net 
+ * Sascha Hagemann				digitalkombinat.net 
  * Ron Drongowski					drongowski.net
  * Nico Brünjes						codecandies.de
  * Marc Tönsing						marctv.de
