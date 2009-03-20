@@ -2,7 +2,8 @@
 
 
 /**
- * Main Class of the Heimweh XML Content Storage and Rendering Machine
+ * Main Class of the Heimweh 
+ * "Minimalistic XML Document Storage and Rendering Machine"
  * 
  * My mind's gone loose inside the shell!
  * 
