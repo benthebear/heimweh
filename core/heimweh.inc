@@ -2,7 +2,9 @@
 
 
 /**
- * Main Class of the Heimweh XML Content Storage and Rendering Thing
+ * Main Class of the Heimweh XML Content Storage and Rendering Machine
+ * 
+ * My mind's gone loose inside the shell!
  * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
  * @package Heimweh
