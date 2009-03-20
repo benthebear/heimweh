@@ -1,9 +1,11 @@
 <?
 
 /**
- * Document Module of Heimweh CMS
+ * Document Module of Heimweh
  * 
- * Organizes Loading, Editing and Saving of Content Objects.
+ * Organizes Loading, Editing and Saving of Documents.
+ * 
+ * If travel is searching and home what's been found, I'm not stoppin'!
  * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
  * @package Heimweh

@@ -5,6 +5,8 @@
  * 
  * Most of these functions are only ocasionally used.
  * 
+ * You die when your young, you die when your young!
+ * 
  * @author Benjamin Birkenhake <benjamin@birkenhake.org>
  * @package Heimweh
  */
