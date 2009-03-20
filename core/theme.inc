@@ -73,7 +73,7 @@ function theme_foreach_template($theme, $template, $mixed){
  * @param string $text // The Text containing HTML
  * @return string
  */
-function theme_get_teaser_text($text){
+function theme_get_teaser_text($text, $cut=400){
 	if(count($array = explode('<hr class="break"/>', $text))>1){
 		// First try to cut the teaser by the <hr>
 		return strip_tags($array[0], "<a> <i> <b> <em> <strong>");
@@ -82,6 +82,6 @@ function theme_get_teaser_text($text){
 		return strip_tags($array[0], "<a> <i> <b> <em> <strong>");
 	}else{
 		// Otherwise return the first 400 Characters
-		return substr(strip_tags($text), 0, 400);
+		return substr(strip_tags($text), 0, $cut);
 	}
 }
