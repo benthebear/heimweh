@@ -1,7 +1,7 @@
 <div id="sidebar">
 <!-- <img src="<?=env_get_base()?>themes/nationalgalerie/anmutunddemut-logo.jpg"> -->
 
-<h1><a href="<?=env_get_base()?>">anmut und demut</a></h1>
+
 
 <ul>
 
@@ -12,5 +12,18 @@
 <li><a href="/impressum" title="Impressume">Impressum</a></li>
 <li><a href="/feeds" title="Feeds">Feeds</a></li>
 </ul>
+
+<?if(isset($xml->created)){
+	print("<p class='date'>".date("d. m. Y", strtotime("".$xml->created))."</p>");
+	
+}?>
+
+<?if(isset($xml->topics)){
+print "<ul>";
+foreach ($xml->topics->topic as $topic) {
+		print "<li>".$topic."</li>";
+	}	
+print "</ul>";	
+}?>
 
 </div>

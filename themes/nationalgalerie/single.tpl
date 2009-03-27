@@ -4,11 +4,16 @@ $xml = simplexml_load_string($data["document"]["xml"])?>
 <?include("header.tpl");?>
 <?include("sidebar.tpl");?>
 <div id="arena">
+<div id="margins">
 <?if(isset($xml->teaserimage)){ ?><img class="teaserimage" src="<?=$xml->teaserimage["url"]?>" /><?}?>
+
+</div>
+<div id="document" class="<?=$xml["type"]?>">
 <h2><?=$xml->title?></h2>
 
 <div class="text">
 <?=$xml->text->asXML()?>
+</div>
 </div>
 
 <div id="comments">
@@ -16,7 +21,9 @@ $xml = simplexml_load_string($data["document"]["xml"])?>
 <? theme_foreach_template("nationalgalerie", "comment", $xml->comments->comment); ?>
 
 
+
 <form method="POST" enctype="text/plain" action="<?=env_get_base()?>comment/add/<?=$xml["id"]?>">
+<!-- <h3 id="addcomment">Kommentar verfassen</h3> -->
 <textarea name="text"></textarea><br/>
 Bitte kein HTML schreiben! Alle Tags werden weggeworfen.<br/>
 Absätze werden automatisch generiert. URLs werden verlinkt.<br/>
@@ -36,4 +43,4 @@ Absätze werden automatisch generiert. URLs werden verlinkt.<br/>
 
 </div>
 
-<? //include("footer.tpl");?>
+<? include("footer.tpl");?>

@@ -3,8 +3,7 @@
 
 <div id="arena">
 <? theme_foreach_template("nationalgalerie", "teaser", $data["documents"]); ?>
-</div>
-
 <?//include("rawdata.tpl");?>
+</div>
 
 <?include("footer.tpl");?>

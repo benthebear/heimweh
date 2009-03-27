@@ -29,18 +29,60 @@ h1 {
 	margin:3em 0em 2em 1em;
 }
 
+/* == Header == */
+
+#header{
+	background-color:lightgrey;
+	padding:10px;
+}
+
+#header h1{
+	display:inline
+}
+
+#header h1 a{
+	color:black;
+	text-decoration:none;
+}
+
+#header p{
+	color:dimgrey;
+	display:inline;	
+}
+
+#header p a{
+	color:black;
+}
+
+#ismyblog{
+	margin-left:40px;
+}
+
+#forwardbackward{
+	margin-left:350px;
+}
+
+
 /* == Sidebar == */
 
 #sidebar{
 	width:210px;
 	float:left;
-	
+	padding-top:4em;
 	height:100%;
 	
 }
 
 #sidebar ul{
+	
 	list-style-type:none;
+	margin-bottom:2em;
+}
+
+
+#sidebar p{
+	margin-left:2em;
+	margin-bottom:2em;
 }
 
 #sidebar img{
@@ -64,9 +106,14 @@ h1 {
 	margin-left:200px;
 	padding-left:50px;
 	padding-top:50px;
-	border-left:1px solid lightgrey;	
+	border-left:10px solid lightgrey;	
 	
 }
+
+#document{
+	min-height:400px;
+}
+
 
 .text{
 	width:30em;
@@ -76,21 +123,32 @@ h1 {
 	max-width:400px;
 }
 
+.moblog .text{
+	width:1000px;
+}
 
-.teaserimage{
+.moblog .text img {
+	max-width:1000px;
+}
+
+#margins{
 	position:absolute;
 	left:820px;
 }
+
+
 
 /* == Teaser ==*/
 
 .teaser {
 	min-height:250px;
-	margin-bottom:2em;
+	padding-bottom:2em;
 }
 
 .teaser .teaserimage{
 	margin-top:-1.5em;
+	position:absolute;
+	left:820px;
 }
 
 .teaser .teaserimage img{
@@ -106,6 +164,18 @@ h1 {
 	font-style:italic;
 }
 
+
+/* == Margins == */
+
+#margins .teaserimage{
+	margin-bottom:2em;
+}
+
+#margins ul{
+	list-style-type:none;
+	color:gray;
+
+}
 
 /* == Inline Elements ==*/
 
@@ -132,19 +202,25 @@ hr.break{
 .text p.volleBreitseite{
 	width:800px;
 	
+	margin-top:1em;
+	
+
 }
 
 .text p.volleBreitseite img{
-	max-width:800px;
+	max-width:740px !important; 
+	border:10px solid lightgrey;
 }
 
 
 /* == Footer == */
-.footer {
-	margin-top:100px;
-	margin-left:200px;
+#footer {
+	background-color:lightgrey;
+	padding:20px 0 10px 0px;	
+}
+
+#footer span{
 	padding-left:50px;
-	margin-bottem:200px;
 }
 
 /* == Comments == */
@@ -171,8 +247,17 @@ hr.break{
 
 /* == Comments Form== */
 
+
+
 #comments form{
 	margin-top:4em;
+	background-color:lightgrey;	
+	padding:20px;
+	padding-left:65px;
+	position:relative;	
+	left:-60px;
+	width:30em;
+	
 }
 
 #comments textarea{
